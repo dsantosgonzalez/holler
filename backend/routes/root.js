@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 // Routes
-const powerOutagesRoutes = require("./powerOutages");
+const hazardRoutes = require("./hazards");
 
-router.use('/power_outages', powerOutagesRoutes);
+router.use('/hazards', hazardRoutes);
 
 module.exports = router;
