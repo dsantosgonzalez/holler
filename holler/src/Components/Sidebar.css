@@ -1,0 +1,26 @@
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: rgba(237, 244, 237, 0.8); /* Semi-transparent background */
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  z-index: 1000; /* Ensures the sidebar overlays the map */
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
