@@ -1,4 +1,4 @@
-import logo from './speaking-head.png';
+import logo from '../assets/speaking-head.png';
 import { Link } from 'react-router-dom';
 import "./WelcomeMessage.css";
 
