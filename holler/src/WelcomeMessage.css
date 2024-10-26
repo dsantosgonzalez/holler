@@ -1,0 +1,19 @@
+.wm-main-title {
+    color: #301014;
+    font-size: 8em;
+    margin-top: 0.5em;
+    margin-bottom: 0.1em;
+}
+  
+.wm-paragraph {
+    color: #301014;
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 1em;
+}
+  
+.App-logo {
+    height: 10vmin;
+    pointer-events: none;
+    margin-bottom: 0.25rem auto;
+}
