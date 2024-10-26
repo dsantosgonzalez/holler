@@ -2,17 +2,35 @@ import React from 'react';
 import "./Sidebar.css";
 
 export default class Sidebar extends React.Component {
+   
+   constructor(props) {
+      super(props);
+      this.state = {
+        collapsed: false,
+      };
+    }
+  
+    toggleSidebar = () => {
+      this.setState({ collapsed: !this.state.collapsed });
+    };
 
    render() {
+      const { collapsed } = this.state;
+  
       return (
-         <div className="sidebar">
-        <h3>Recent Reports</h3>
-        <ul>
-          <li>Power outage at Main St</li>
-          <li>Flooding at Oakwood Ave</li>
-          <li>Roadblock near Park Blvd</li>
-        </ul>
-      </div>
-      )
-   }
+        <div className={`sidebar ${collapsed ? 'open' : 'collapsed'}`}>
+          <button onClick={this.toggleSidebar} className="toggle-button">
+            {collapsed ? '←' : '→'}
+          </button>
+          {collapsed && (
+            <>
+              <h3>Recent Reports</h3>
+              <ul>
+                <li>HELLO</li>
+              </ul>
+            </>
+          )}
+        </div>
+      );
+    }
 }

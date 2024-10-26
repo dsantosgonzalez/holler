@@ -16,6 +16,8 @@ export default class MyMap extends React.Component {
     hazards: []
   }
 
+
+
   componentDidMount() {
     axios.get("http://localhost:8080/api/hazards/all")
       .then(res => {

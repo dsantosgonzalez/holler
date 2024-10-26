@@ -9,6 +9,11 @@
   padding: 20px;
   z-index: 1000; /* Ensures the sidebar overlays the map */
   overflow-y: auto;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar.collapsed {
+    width: 50px;
 }
 
 .sidebar h3 {
