@@ -9,7 +9,7 @@ const WelcomeMessage = () => {
         <p className="wm-paragraph">a tool for local governments during natural disasters</p>
         <img src={logo} className="App-logo" alt="logo" />
         <Link to="/dashboard" style={{ textDecoration: 'none'}}>
-            <button>Access the disaster dashboard</button>
+            <button className="wm-button">Access the disaster dashboard</button>
         </Link>
       </div>
     );

@@ -13,7 +13,22 @@
 }
   
 .App-logo {
+    display: block;
+    margin: 0.5rem auto;
     height: 10vmin;
     pointer-events: none;
-    margin-bottom: 0.25rem auto;
+    margin-bottom: 0.5rem auto;
+}
+
+.wm-button{
+    display: inline-block;
+    background-color: #79B791;
+    margin: 0.5em auto;
+    color: #301014;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: background-color 0.3s;
 }

@@ -6,17 +6,3 @@
   justify-content: center;
   align-items: flex-start;
 }
-
-button {
-  display: block;
-  margin: 1rem auto;
-  background-color: #79B791;
-  color: #301014;
-  padding: 10px 20px;
-  font-weight: bold;
-  /* border: none; */
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
-}
