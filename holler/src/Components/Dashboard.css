@@ -3,6 +3,7 @@
     font-size: 3em;
     margin: 0;
     padding-left: 10px;
+    padding-right: 0.25em;
 }
 
 .dashboard-button {
@@ -10,19 +11,25 @@
     background-color: #79B791;
     margin: 0.25em auto;
     color: #301014;
-    padding: 10px 20px;
+    padding: 0.5em 1em;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 0.5em;
     cursor: pointer;
-    font-size: 1.5em;
+    font-size: 1.25em;
     max-width: max-content;
     width: auto;
     box-sizing: border-box;
     transition: background-color 0.3s ease;
 }
 
+.dashboard-button:hover {
+    background-color: #579570;
+}
+
 .dashboard-button-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    align-items: center;
+    gap: 0.5em;
 }
