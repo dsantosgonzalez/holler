@@ -21,6 +21,8 @@ export default class MyMap extends React.Component {
       .then(res => {
         const hazards = res.data;
         this.setState(({ hazards }));
+      }).catch(error => {
+        console.log(error.response);
       });
   }
 
