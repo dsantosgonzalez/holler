@@ -16,11 +16,15 @@ export default class MyMap extends React.Component {
     hazards: []
   }
 
+
+
   componentDidMount() {
     axios.get("http://localhost:8080/api/hazards/all")
       .then(res => {
         const hazards = res.data;
         this.setState(({ hazards }));
+      }).catch(error => {
+        console.log(error.response);
       });
   }
 
