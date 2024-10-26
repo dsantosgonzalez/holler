@@ -1,6 +1,9 @@
 import "./Dashboard.css";
 import { Link } from 'react-router-dom';
 import MyMap from "./MyMap";
+import camLogo from "./camera-logo.jpg"
+import flowLogo from "./Water-flow.png"
+import blockLogo from "./road-block.jpg"
 
 const Dashboard = () => {
     return (
@@ -15,9 +18,27 @@ const Dashboard = () => {
                 </Link>
             </div>
             <MyMap />
+            <div className="buttonBar">
+                <Link to="/submitPhoto" style={{textDecoration: 'none'}}>
+                    <button className = "Camera-button">
+                    <img src={camLogo} className="button-Icon" alt="camera" />
+                    </button>
+                </Link>
+                <Link to="/showFlood" style = {{textDecoration: 'none'}}>
+                    <button className = "Flood-button">
+                    <img src={flowLogo} className="button-Icon" alt="flood" />
+                    </button>
+                </Link>
+                <Link to="/showRoadBlock" style={{textDecoration: 'none'}}>
+                    <button className= "RoadBlock-button">
+                    <img src={blockLogo} className="button-Icon" alt="roadblock" />
+                    </button>
+                </Link>
+            </div>
             {
             // <p className="dashboard-paragraph">TODO: map, image uploads, severity status, update notifications</p>
             }
+           
         </div>
     );
 }
