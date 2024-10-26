@@ -1,9 +1,9 @@
 import "./Dashboard.css";
 import { Link } from 'react-router-dom';
 import MyMap from "./MyMap";
-import camLogo from "./camera-logo.jpg"
-import flowLogo from "./Water-flow.png"
-import blockLogo from "./road-block.jpg"
+import camLogo from "./camera-Logo.jpg"
+import flowLogo from "./Water-flow.webp"
+import blockLogo from "./RoadBlock-Logo.jpg"
 
 const Dashboard = () => {
     return (
