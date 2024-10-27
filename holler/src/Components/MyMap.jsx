@@ -124,7 +124,7 @@ export default class MyMap extends React.Component {
             {Object.keys(this.state.hazardGroups).map((type, index) => (
                 <Overlay key={type} checked name={type}>
                   <LayerGroup>
-                    <MarkerClusterGroup maxClusterRadius={5} iconCreateFunction={createClusterCustomIcon}>
+                    <MarkerClusterGroup maxClusterRadius={40} iconCreateFunction={createClusterCustomIcon}>
                       {this.state.hazardGroups[type].map((marker) => marker)}
                     </MarkerClusterGroup>
                   </LayerGroup>

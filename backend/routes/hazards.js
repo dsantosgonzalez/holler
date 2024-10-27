@@ -41,7 +41,6 @@ router.post("/insert", async (req, res) => {
 
 router.post("/insert/multiple", async (req, res) => {
     try {
-        console.log(req)
         await Hazard.insertMany(req.body);
         res.status(201).send("Successful!");
     } catch (err) {
