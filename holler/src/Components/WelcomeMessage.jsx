@@ -11,6 +11,11 @@ const WelcomeMessage = () => {
         <Link to="/dashboard" style={{ textDecoration: 'none'}}>
             <button className="wm-button">Access the disaster dashboard</button>
         </Link>
+        <p className="wm-link">
+          <Link to="/about" style={{ color: '#301014' }}>
+            About
+          </Link>
+        </p>
       </div>
     );
   }

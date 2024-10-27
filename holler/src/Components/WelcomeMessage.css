@@ -1,8 +1,18 @@
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .wm-main-title {
     color: #301014;
     font-size: 8em;
     margin-top: 0.5em;
     margin-bottom: 0.1em;
+    animation: fadeIn 0.3s ease-in-out;
 }
   
 .wm-paragraph {
@@ -10,6 +20,7 @@
     font-size: 2em;
     margin-top: 0;
     margin-bottom: 1em;
+    animation: fadeIn 0.5s ease-in-out;
 }
   
 .App-logo {
@@ -18,6 +29,7 @@
     height: 10vmin;
     pointer-events: none;
     margin-bottom: 0.5rem auto;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .wm-button{
@@ -31,4 +43,15 @@
     cursor: pointer;
     font-size: 1.5em;
     transition: background-color 0.3s;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.wm-button:hover {
+    background-color: #579570;
+}
+
+.wm-link {
+    display: block;
+    margin-top: 35vh;
+    animation: fadeIn 1.5s ease-in-out;
 }

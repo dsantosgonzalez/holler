@@ -36,11 +36,11 @@ const Dashboard = () => {
         <div>
             <MyMap />
             <div className="dashboard-button-container">
-                <h1 className="dashboard-main-title">Disaster dashboard.</h1>
                 <Link to="/offerhelp" style={{ textDecoration: 'none', alignSelf: 'center' }}>
                     <button className="dashboard-button">Able to help?</button>
                 </Link>
                 <button className="dashboard-button" onClick={toggleModal}>Report a dangerous condition.</button>
+                <h1 className="dashboard-main-title">Disaster dashboard.</h1>
             </div>
 
             {/* Modal */}
