@@ -1,11 +1,7 @@
 import "./Dashboard.css";
 import React from 'react';
 import MyMap from "./MyMap";
-import cameraPic from "../assets/icons8-camera-48.png"
-import floodPic from "../assets/flood.png"
-import roadBlocking from "../assets/block.png"
-import firePic from "../assets/fire.png"
-import electricPic from "../assets/power_outage.png"
+import plus from "../assets/plus-50.png"
 
 /*
 <div className="dashboard-button-container">
@@ -39,24 +35,8 @@ class Dashboard extends React.Component {
             <div>
                 <MyMap floodReport={this.state.floodReport} fireReport={this.state.fireReport} powerReport={this.state.powerReport} roadReport={this.state.roadReport} />
                 <div className="buttonBar">
-                    <button className = "Flood-button" onClick = {() => this.setState({ floodReport: !this.state.floodReport })}>
-                    <img src={floodPic} className="button-Icon" alt="flood" />
-                    </button>
-                
-                    <button className = "fire-button" onClick = {() => this.setState({ fireReport: !this.state.fireReport })}>
-                    <img src={firePic} className="button-Icon" alt="fire" />
-                    </button>
-                
                     <button className = "Camera-button" onClick = {() => this.cameraSubmit()}>
-                    <img src={cameraPic} className="button-Icon" alt="fire" />
-                    </button>
-                
-                    <button className = "power-button" onClick = {() => this.setState({ powerReport: !this.state.powerReport })}>
-                    <img src={electricPic} className="button-Icon" alt="power" />
-                    </button>
-                
-                    <button className= "RoadBlock-button" onClick = {() => this.setState({ roadReport: !this.state.roadReport })}>
-                    <img src={roadBlocking} className="button-Icon" alt="roadblock" />
+                    <img src={plus} className="button-Icon" alt="fire" />
                     </button>
                 </div>           
             </div>
