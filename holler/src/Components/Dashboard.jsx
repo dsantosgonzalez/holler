@@ -1,11 +1,6 @@
 import React from 'react';
 import "./Dashboard.css";
 import MyMap from "./MyMap";
-import cameraPic from "../assets/icons8-camera-48.png"
-import floodPic from "../assets/flood.png"
-import roadBlocking from "../assets/block.png"
-import firePic from "../assets/fire.png"
-import electricPic from "../assets/power_outage.png"
 
 /*
 <div className="dashboard-button-container">
@@ -26,8 +21,33 @@ class Dashboard extends React.Component {
             floodReport: true,
             fireReport: true,
             powerReport: true,
-            roadReport: true
+            roadReport: true,
+            showPopup: false,
+            picture: null,
+            description: ""
         }
+    }
+
+    togglePopup = () => {
+        this.setState({ showPopup: !this.state.showPopup });
+    }
+
+    handlePictureChange = (event) => {
+        this.setState({ picture: event.target.files[0] });
+    }
+
+    handleDescriptionChange = (event) => {
+        this.setState({ description: event.target.value });
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        // GET YOUR DATA HERE
+        console.log('Picture:', this.state.picture);
+        console.log('Description:', this.state.description);
+        this.togglePopup();
+        this.setState({picture: null})
+        this.setState({description: null})
     }
 
     cameraSubmit() {
@@ -37,28 +57,27 @@ class Dashboard extends React.Component {
     render() {
         return (
             <div>
+                <button className="submit-report-button" onClick={this.togglePopup}>+</button>
+                {this.state.showPopup && (
+                    <div className="popup">
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                                Picture:
+                                <input type="file" onChange={this.handlePictureChange} />
+                            </label>
+                            <label>
+                                Description:
+                                <textarea value={this.state.description} onChange={this.handleDescriptionChange} />
+                            </label>
+                            <br />
+                            <div className="button-group">
+                                <button type="submit">Submit</button>
+                                <button type="button" onClick={this.togglePopup}>Close</button>
+                            </div>  
+                        </form>
+                    </div>
+                )}
                 <MyMap floodReport={this.state.floodReport} fireReport={this.state.fireReport} powerReport={this.state.powerReport} roadReport={this.state.roadReport} />
-                <div className="buttonBar">
-                    <button className = "Flood-button" onClick = {() => this.setState({ floodReport: !this.state.floodReport })}>
-                    <img src={floodPic} className="button-Icon" alt="flood" />
-                    </button>
-                
-                    <button className = "fire-button" onClick = {() => this.setState({ fireReport: !this.state.fireReport })}>
-                    <img src={firePic} className="button-Icon" alt="fire" />
-                    </button>
-                
-                    <button className = "Camera-button" onClick = {() => this.cameraSubmit()}>
-                    <img src={cameraPic} className="button-Icon" alt="fire" />
-                    </button>
-                
-                    <button className = "power-button" onClick = {() => this.setState({ powerReport: !this.state.powerReport })}>
-                    <img src={electricPic} className="button-Icon" alt="power" />
-                    </button>
-                
-                    <button className= "RoadBlock-button" onClick = {() => this.setState({ roadReport: !this.state.roadReport })}>
-                    <img src={roadBlocking} className="button-Icon" alt="roadblock" />
-                    </button>
-                </div>           
             </div>
         );
     }
