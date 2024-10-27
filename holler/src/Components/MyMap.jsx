@@ -49,6 +49,22 @@ export default class MyMap extends React.Component {
       });
   }
 
+  refreshPoints() {
+    axios.get("http://localhost:8080/api/hazards/all")
+      .then(res => {
+        const hazards = res.data;
+        this.setState(({ hazards }), () => this.setupMapMarkers());
+      }).catch(error => {
+        console.log(error.response);
+      });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.triggerRefresh !== this.props.triggerRefresh) {
+      this.refreshPoints();
+    }
+  }
+
   setupMapMarkers() {
 
     const newHazardGroups = {
@@ -83,6 +99,8 @@ export default class MyMap extends React.Component {
             {hazard.type}
             <br />
             {hazard.severity}
+            <br />
+            {hazard.description}
           </Popup>
         </Marker>
       )

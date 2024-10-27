@@ -11,7 +11,8 @@ class Dashboard extends React.Component {
             showPopup: false,
             picture: null,
             description: "",
-            severity: "Moderate"
+            severity: "Moderate",
+            triggerRefresh: false
         }
     }
 
@@ -53,6 +54,8 @@ class Dashboard extends React.Component {
                         console.log(err)
                     });
                 
+                    this.setState({ triggerRefresh: !this.state.triggerRefresh });
+                
             };
             reader.readAsDataURL(picture);
         }
@@ -92,7 +95,7 @@ class Dashboard extends React.Component {
                         <form onSubmit={this.handleSubmit}>
                             <label>
                                 Picture (PNG, JPG):
-                                <input required type="file" accept=".png .jpg .jpeg" onChange={this.handlePictureChange}/>
+                                <input required type="file" accept=".png .jpg .jpeg" onChange={this.handlePictureChange} />
                             </label>
                             <label>
                                 Description:
@@ -115,7 +118,7 @@ class Dashboard extends React.Component {
                         </form>
                     </div>
                 )}
-                <MyMap floodReport={this.state.floodReport} fireReport={this.state.fireReport} powerReport={this.state.powerReport} roadReport={this.state.roadReport} />
+                <MyMap floodReport={this.state.floodReport} fireReport={this.state.fireReport} powerReport={this.state.powerReport} roadReport={this.state.roadReport} triggerRefresh={this.state.triggerRefresh} />
             </div>
         );
     }

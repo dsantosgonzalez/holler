@@ -14,7 +14,8 @@ const HazardSchema = new mongoose.Schema({
     },
     longitude: { type: Number, required: true},
     latitude: { type: Number, required: true},
-    imageUrl: { type: String, required: true }
+    imageUrl: { type: String, required: true },
+    description: { type: String, required: true }
 }, {collection: "Hazards"})
 
 const Hazard = mongoose.model('Hazard', HazardSchema);

@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
         maxTokens: 200,
     };
 
-    const question = 'Select only one of the categories to which this image pertains to, and only return the category it belongs to: Power Outage, Fire, Flooding, Blocked Road. Only return the word no punctuation afterwards.';
+    const question = 'Select only one of the categories to which this image pertains to, and only return the category it belongs to: Power Outage, Fire, Flooding, Blocked Road.';
     const messages = [
     {
         role: 'user',
@@ -62,13 +62,15 @@ router.post('/', async (req, res) => {
         */
 
         const imageCategory = imageResponse.result.choices[0].message.content;
+        const cleanedImage = imageCategory.replace(/[^\w\s]/g, '');
         const newHazard = new Hazard({
-            type: imageCategory,
+            type: cleanedImage,
             date: Date.now().toString(),
             severity: req.body.severity,
             latitude: req.body.latitude,
             longitude: req.body.longitude,
-            imageUrl: `image/${imageCategory}`
+            imageUrl: `image/${cleanedImage}`,
+            description: req.body.description
         });
         const insertedHazard = await newHazard.save();
         res.status(200).send({ status: "Succesfull", category: imageCategory });
