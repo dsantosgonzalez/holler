@@ -29,4 +29,22 @@ router.get("/fires", async (req, res) => {
     }
 })
 
+router.get("/blocked_road", async (req, res) => {
+    try {
+        const blockedTotals = await Hazard.countDocuments().where("type").equals("Blocked Road");
+        res.json(blockedTotals);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+})
+
+router.get("/flooding", async (req, res) => {
+    try {
+        const floodingTotals = await Hazard.countDocuments().where("type").equals("Flooding");
+        res.json(floodingTotals);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+})
+
 module.exports = router;
