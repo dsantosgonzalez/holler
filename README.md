@@ -66,7 +66,7 @@ Open `http://localhost:3000/` and access the application.
 
 ## Demo
 
-https://www.youtube.com/watch?v=Zrnt7qYgvNU
+https://youtu.be/6a6rsfjrWQE
 
 
 ## Authors
