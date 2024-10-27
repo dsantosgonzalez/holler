@@ -10,7 +10,7 @@ const HazardSchema = new mongoose.Schema({
     severity: {
         type: String,
         required: true,
-        enum: ["Critical", "Moderate", "Low"]
+        enum: ["Critical", "Moderate", "Low", "High"]
     },
     longitude: { type: Number, required: true},
     latitude: { type: Number, required: true},

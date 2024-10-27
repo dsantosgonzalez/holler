@@ -1,88 +1,87 @@
-import React, {useState} from 'react';
+import React from 'react';
 import "./Dashboard.css";
-import { Link } from 'react-router-dom';
 import MyMap from "./MyMap";
-import axios from 'axios';
 
-const Dashboard = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [description, setDescription] = useState('');
-    const [imageBase64, setImageBase64] = useState('');
-
-    const toggleModal = () => setIsModalOpen(!isModalOpen);
-
-    const handleDescriptionChange = (event) => {
-        setDescription(event.target.value);
-    };
-
-    const handleImageChange = (event) => {
-        const file = event.target.files[0];
-        if (file){
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImageBase64(reader.result);
-            };
-            reader.readAsDataURL(file);
+class Dashboard extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            floodReport: true,
+            fireReport: true,
+            powerReport: true,
+            roadReport: true,
+            showPopup: false,
+            picture: null,
+            description: ""
         }
-    };
+    }
 
-    const handleSubmit = async (event) => {
+    togglePopup = () => {
+        this.setState({ showPopup: !this.state.showPopup });
+    }
+
+    handlePictureChange = (event) => {
+        this.setState({ picture: event.target.files[0] });
+    }
+
+    handleDescriptionChange = (event) => {
+        this.setState({ description: event.target.value });
+    }
+
+    handleSubmit = (event) => {
         event.preventDefault();
-
-        const data = {
-            description,
-            image: imageBase64,
-        };
-
-        try {
-            console.log(data);
-            const response = await axios.post("http://localhost:8080/api/report", data, {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            console.log(response.data.message);
-            toggleModal();
-        } catch (error) {
-            console.error('It wont even send!:', error);
+        
+        const { picture, description } = this.state;
+    
+        if (picture) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const pictureData = e.target.result;
+                console.log('Picture Data:', pictureData);
+                console.log('Description:', description);
+                
+            };
+            reader.readAsDataURL(picture);
+        } else {
+            console.log('No picture selected');
         }
-    };
+    
+        this.togglePopup();
+        this.setState({ picture: null, description: null });
+    }
 
-    return (
-        <div>
-            <MyMap />
-            <div className="dashboard-button-container">
-                <Link to="/offerhelp" style={{ textDecoration: 'none', alignSelf: 'center' }}>
-                    <button className="dashboard-button">Able to help?</button>
-                </Link>
-                <button className="dashboard-button" onClick={toggleModal}>Report a dangerous condition.</button>
-                <h1 className="dashboard-main-title">Disaster dashboard.</h1>
-            </div>
+    cameraSubmit() {
+        console.log("Hello");
+    }
 
-            {/* Modal */}
-            {isModalOpen && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close-button" onClick={toggleModal}>&times;</span>
-                        <h2>Report a Dangerous Condition</h2>
-                        <form onSubmit={handleSubmit}>
-                            <label>Description:</label>
-                            <textarea
-                                rows="4"
-                                cols="50"
-                                placeholder="Describe the condition..."
-                                value={description}
-                                onChange={handleDescriptionChange}
-                            ></textarea>
-                            <label>Upload Image:</label>
-                            <input type="file" onChange={handleImageChange} accept="image/*" />
-                            <button type="submit" className="submit-button">Submit Report</button>
+    render() {
+        return (
+            <div>
+                <button className="submit-report-button" onClick={this.togglePopup}>+</button>
+                {this.state.showPopup && (
+                    <div className="popup">
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                                Picture:
+                                <input type="file" onChange={this.handlePictureChange} />
+                            </label>
+                            <label>
+                                Description:
+                                <textarea value={this.state.description} onChange={this.handleDescriptionChange} />
+                            </label>
+                            <br />
+                            <div className="button-group">
+                                <button type="submit">Submit</button>
+                                <button type="button" onClick={this.togglePopup}>Close</button>
+                            </div>  
                         </form>
                     </div>
-                </div>
-            )}
-        </div>
-    );
+                )}
+                <MyMap floodReport={this.state.floodReport} fireReport={this.state.fireReport} powerReport={this.state.powerReport} roadReport={this.state.roadReport} />
+            </div>
+        );
+    }
 }
 
 export default Dashboard;

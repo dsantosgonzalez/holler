@@ -1,86 +1,89 @@
 .dashboard-main-title {
     color: #301014;
     font-size: 3em;
-    margin: 0;
-    padding-left: 10px;
-    padding-right: 0.25em;
+    margin-top: 0.25em;
+    margin-bottom: 0.1em;
 }
 
-.dashboard-button {
-    display: inline-block;
-    background-color: #79B791;
-    /* margin: 0.25em auto; */
-    color: #301014;
-    padding: 0.5em 1em;
-    font-weight: bold;
-    border-radius: 0.5em;
-    cursor: pointer;
-    font-size: 1.25em;
-    /* max-width: max-content; */
-    width: auto;
-    box-sizing: border-box;
-    transition: background-color 0.3s ease;
-}
-
-.dashboard-button:hover {
-    background-color: #579570;
-}
-
-.dashboard-button-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 1em;
-}
-
-.modal {
-    position: fixed;
+.submit-report-button {
+    position: absolute;
+    top: 95vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    width: 1.5em;
+    height: 1.5em;
     z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    background-color: #79B791;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1100;
 }
 
-.modal-content {
+.submit-report-button:hover {
+    background-color: #659979;
+}
+
+.popup {
+    position: absolute;
+    top: 80vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #EDF4ED;
-    margin: 10% auto;
+    color: #301014;
     padding: 20px;
-    border: 1px solid;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 8px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 300px;
     text-align: center;
 }
 
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+.popup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.close-button:hover {
-    color: #000;
-}
-
-.submit-button {
-    display: inline-block;
-    background-color: #79B791;
-    margin: 0.5em auto;
+.popup input [type="file"],
+.popup textarea {
+    width: 90%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #51291E;
+    border-radius: 5px;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 1em;
     color: #301014;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 1.5em;
-    transition: background-color 0.3s;
 }
 
-.submit-button:hover {
-    background-color: #579570;
+.popup button {
+    background-color: #79B791;
+    color: #301014;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.popup button:hover {
+    background-color: #659979;
+}
+
+.popup .button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+.popup .button-group button {
+    flex: 1;
+    margin: 0 5px;
 }
