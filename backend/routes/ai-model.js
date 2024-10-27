@@ -31,7 +31,7 @@ router.post('/', async (req, res) => {
         {
             type: 'image_url',
             image_url: {
-            url: 'data:image/jpeg;base64,' + req.body.image,
+            url: req.body.image,
             },
         },
         {
@@ -50,6 +50,16 @@ router.post('/', async (req, res) => {
             messages,
             ...modelParameters,
         });
+
+    /*
+        {
+            latitude: latitude,
+            longitude: longitude,
+            image: pictureData,
+            description: description,
+            severity: severity
+        }
+        */
 
         const imageCategory = imageResponse.result.choices[0].message.content;
         const newHazard = new Hazard({

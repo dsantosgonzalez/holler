@@ -1,22 +1,7 @@
 import React from 'react';
 import "./Dashboard.css";
 import MyMap from "./MyMap";
-import cameraPic from "../assets/icons8-camera-48.png"
-import floodPic from "../assets/flood.png"
-import roadBlocking from "../assets/block.png"
-import firePic from "../assets/fire.png"
-import electricPic from "../assets/power_outage.png"
-
-/*
-<div className="dashboard-button-container">
-                <Link to="/offerhelp" style={{ textDecoration: 'none'}}>
-                    <button className="dashboard-button">Able to help?</button>
-                </Link>
-                <Link to="/needhelp" style={{ textDecoration: 'none'}}>
-                    <button className="dashboard-button">Need help or want to report something?</button>
-                </Link>
-            </div>
-*/
+import axios from 'axios';
 
 class Dashboard extends React.Component {
     
@@ -26,39 +11,115 @@ class Dashboard extends React.Component {
             floodReport: true,
             fireReport: true,
             powerReport: true,
-            roadReport: true
+            roadReport: true,
+            showPopup: false,
+            picture: null,
+            description: "",
+            severity: "Moderate"
         }
     }
 
-    cameraSubmit() {
-        console.log("Hello");
+    togglePopup = () => {
+        this.setState({ showPopup: !this.state.showPopup });
     }
+
+    handlePictureChange = (event) => {
+        this.setState({ picture: event.target.files[0] });
+    }
+
+    handleDescriptionChange = (event) => {
+        this.setState({ description: event.target.value });
+    }
+
+    handleSubmit = async (event) => {
+        event.preventDefault();
+        
+        const { latitude, longitude } = await this.getCurrentLocation();
+        const { picture, description, severity } = this.state;
+    
+        if (picture) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const pictureData = e.target.result;
+                const reportData = {
+                    latitude: latitude,
+                    longitude: longitude,
+                    image: pictureData,
+                    description: description,
+                    severity: severity
+                }
+
+                axios.post("http://localhost:8080/api/report", reportData)
+                    .then((response) => {
+                        console.log(response)
+                    })
+                    .catch((err) => {
+                        console.log(err)
+                    });
+                
+            };
+            reader.readAsDataURL(picture);
+        }
+    
+        this.togglePopup();
+        this.setState({ picture: null, description: null, severity: "Moderate" });
+    }
+
+    handleSeverityChange = (event) => {
+        this.setState({ severity: event.target.value });
+    }
+
+    getCurrentLocation = () => {
+        return new Promise((resolve, reject) => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const { latitude, longitude } = position.coords;
+                        resolve({ latitude, longitude });
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+            } else {
+                reject(new Error("Geolocation is not supported by this browser."));
+            }
+        });
+    };
 
     render() {
         return (
             <div>
+                <button className="submit-report-button" onClick={this.togglePopup}>+</button>
+                {this.state.showPopup && (
+                    <div className="popup">
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                                Picture (PNG, JPG):
+                                <input required type="file" accept=".png .jpg .jpeg" onChange={this.handlePictureChange} f/>
+                            </label>
+                            <label>
+                                Description:
+                                <textarea required value={this.state.description} onChange={this.handleDescriptionChange} />
+                            </label>
+                            <label>
+                                Severity:
+                                <select value={this.state.severity} onChange={this.handleSeverityChange}>
+                                    <option value="Critical">Critical</option>
+                                    <option value="High">High</option>
+                                    <option value="Moderate">Moderate</option>
+                                    <option value="Low">Low</option>
+                                </select>
+                            </label>
+                            <br />
+                            <div className="button-group">
+                                <button type="submit">Submit</button>
+                                <button type="button" onClick={this.togglePopup}>Close</button>
+                            </div>  
+                        </form>
+                    </div>
+                )}
                 <MyMap floodReport={this.state.floodReport} fireReport={this.state.fireReport} powerReport={this.state.powerReport} roadReport={this.state.roadReport} />
-                <div className="buttonBar">
-                    <button className = "Flood-button" onClick = {() => this.setState({ floodReport: !this.state.floodReport })}>
-                    <img src={floodPic} className="button-Icon" alt="flood" />
-                    </button>
-                
-                    <button className = "fire-button" onClick = {() => this.setState({ fireReport: !this.state.fireReport })}>
-                    <img src={firePic} className="button-Icon" alt="fire" />
-                    </button>
-                
-                    <button className = "Camera-button" onClick = {() => this.cameraSubmit()}>
-                    <img src={cameraPic} className="button-Icon" alt="fire" />
-                    </button>
-                
-                    <button className = "power-button" onClick = {() => this.setState({ powerReport: !this.state.powerReport })}>
-                    <img src={electricPic} className="button-Icon" alt="power" />
-                    </button>
-                
-                    <button className= "RoadBlock-button" onClick = {() => this.setState({ roadReport: !this.state.roadReport })}>
-                    <img src={roadBlocking} className="button-Icon" alt="roadblock" />
-                    </button>
-                </div>           
             </div>
         );
     }

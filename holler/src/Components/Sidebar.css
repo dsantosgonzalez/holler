@@ -14,7 +14,7 @@
   
   /* Open and Collapsed Sidebar States */
   .sidebar.open {
-    width: 300px;
+    width: 20vw;
   }
   
   .sidebar.collapsed {
@@ -25,16 +25,16 @@
   /* Toggle Button Styling */
   .toggle-button {
     position: fixed; /* Keep the button in a fixed position */
-    left: 10px; /* Adjust so it doesn’t shift with sidebar width */
-    top: 10px;
-    width: 30px;
-    height: 30px;
+    left: 0.5em; /* Adjust so it doesn’t shift with sidebar width */
+    top: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
     background-color: #79B791;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 36px;
     cursor: pointer;
     border-radius: 50%;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
