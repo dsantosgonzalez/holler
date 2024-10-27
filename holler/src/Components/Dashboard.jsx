@@ -2,34 +2,49 @@ import React, {useState} from 'react';
 import "./Dashboard.css";
 import { Link } from 'react-router-dom';
 import MyMap from "./MyMap";
+import axios from 'axios';
 
 const Dashboard = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [description, setDescription] = useState('');
-    const [image, setImage] = useState(null);
+    const [imageBase64, setImageBase64] = useState('');
 
     const toggleModal = () => setIsModalOpen(!isModalOpen);
 
-    // Handle description input
     const handleDescriptionChange = (event) => {
         setDescription(event.target.value);
     };
 
-    // Handle image upload
     const handleImageChange = (event) => {
-        setImage(event.target.files[0]);
+        const file = event.target.files[0];
+        if (file){
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImageBase64(reader.result);
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
-    // Handle form submission
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Here, you can handle the image and description upload
-        console.log("Description:", description);
-        console.log("Image:", image);
+        const data = {
+            description,
+            image: imageBase64,
+        };
 
-        // Close the modal after submission
-        toggleModal();
+        try {
+            const response = await axios.post("http://localhost:8080/api/report", data, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            console.log(response.data.message);
+            toggleModal();
+        } catch (error) {
+            console.error('It wont even send!:', error);
+        }
     };
 
     return (
