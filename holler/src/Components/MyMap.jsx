@@ -83,8 +83,6 @@ export default class MyMap extends React.Component {
             {hazard.type}
             <br />
             {hazard.severity}
-            <br />
-            {hazard.imageUrl}
           </Popup>
         </Marker>
       )

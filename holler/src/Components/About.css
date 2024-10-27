@@ -1,0 +1,16 @@
+@keyframes fadeIn{
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.about-paragraph {
+    color: #301014;
+    font-size: 2em;
+    margin-left: 3em;
+    margin-right: 3em;
+    animation: fadeIn 0.5s ease-in-out;
+}

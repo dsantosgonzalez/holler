@@ -8,7 +8,7 @@
 .dashboard-button {
     display: inline-block;
     background-color: #79B791;
-    margin: 0.25em auto;
+    /* margin: 0.25em auto; */
     color: #301014;
     padding: 10px 20px;
     font-weight: bold;
