@@ -4,3 +4,25 @@
     max-width: 600px;
     margin: 0 auto;
 }
+
+.marker-cluster-0 {
+    background: #f6ff00;
+    border: 3px solid #ededed;
+    border-radius: 50%;
+    color: #000000;
+    height: 40px;
+    line-height: 37px;
+    text-align: center;
+    width: 40px;
+}
+
+.marker-cluster-1 {
+    background: #009dff;
+    border: 3px solid #ededed;
+    border-radius: 50%;
+    color: #ededed;
+    height: 40px;
+    line-height: 37px;
+    text-align: center;
+    width: 40px;
+}

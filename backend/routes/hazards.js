@@ -39,4 +39,23 @@ router.post("/insert", async (req, res) => {
     }
 })
 
+router.post("/insert/multiple", async (req, res) => {
+    try {
+        console.log(req)
+        await Hazard.insertMany(req.body);
+        res.status(201).send("Successful!");
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+})
+
+router.delete("/delete/all", async (req, res) => {
+    try {
+        await Hazard.deleteMany({});
+        res.status(201).send("Successful!");
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+})
+
 module.exports = router;
