@@ -1,5 +1,5 @@
 import "./Dashboard.css";
-import { Link } from 'react-router-dom';
+import React from 'react';
 import MyMap from "./MyMap";
 import cameraPic from "../assets/icons8-camera-48.png"
 import floodPic from "../assets/flood.png"
@@ -7,28 +7,8 @@ import roadBlocking from "../assets/block.png"
 import firePic from "../assets/fire.png"
 import electricPic from "../assets/power_outage.png"
 
-const floodReport =() =>{
-    console.log("flood report pressed");
-}
-const fireReport =() =>{
-    console.log("fire report pressed");
-}
-const cameraSubmit =() =>{
-    console.log("camera button pressed");
-}
-const powerReport =() =>{
-    console.log("power report pressed");
-}
-const roadReport =() =>{
-    console.log("road report pressed");
-}
-
-const Dashboard = () => {
-    
-    return (
-        <div>
-            <h1 className="dashboard-main-title">Disaster Dashboard</h1>
-            <div className="dashboard-button-container">
+/*
+<div className="dashboard-button-container">
                 <Link to="/offerhelp" style={{ textDecoration: 'none'}}>
                     <button className="dashboard-button">Able to help?</button>
                 </Link>
@@ -36,43 +16,52 @@ const Dashboard = () => {
                     <button className="dashboard-button">Need help or want to report something?</button>
                 </Link>
             </div>
-            <MyMap />
-            <div className="buttonBar">
-                
-                
-                    <button className = "Flood-button" onCLick = {floodReport}>
+*/
+
+class Dashboard extends React.Component {
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            floodReport: true,
+            fireReport: true,
+            powerReport: true,
+            roadReport: true
+        }
+    }
+
+    cameraSubmit() {
+        console.log("Hello");
+    }
+
+    render() {
+        return (
+            <div>
+                <MyMap floodReport={this.state.floodReport} fireReport={this.state.fireReport} powerReport={this.state.powerReport} roadReport={this.state.roadReport} />
+                <div className="buttonBar">
+                    <button className = "Flood-button" onClick = {() => this.setState({ floodReport: !this.state.floodReport })}>
                     <img src={floodPic} className="button-Icon" alt="flood" />
                     </button>
                 
-                
-                    <button className = "fire-button" onClick = {fireReport}>
+                    <button className = "fire-button" onClick = {() => this.setState({ fireReport: !this.state.fireReport })}>
                     <img src={firePic} className="button-Icon" alt="fire" />
                     </button>
                 
-                
-                    <button className = "Camera-button" onClick = {cameraSubmit}>
+                    <button className = "Camera-button" onClick = {() => this.cameraSubmit()}>
                     <img src={cameraPic} className="button-Icon" alt="fire" />
                     </button>
-               
                 
-                    <button className = "power-button" onClick = {powerReport}>
+                    <button className = "power-button" onClick = {() => this.setState({ powerReport: !this.state.powerReport })}>
                     <img src={electricPic} className="button-Icon" alt="power" />
                     </button>
                 
-                
-                
-                    <button className= "RoadBlock-button" onClick = {roadReport}>
+                    <button className= "RoadBlock-button" onClick = {() => this.setState({ roadReport: !this.state.roadReport })}>
                     <img src={roadBlocking} className="button-Icon" alt="roadblock" />
                     </button>
-                
-                
+                </div>           
             </div>
-            {
-            // <p className="dashboard-paragraph">TODO: map, image uploads, severity status, update notifications</p>
-            }
-           
-        </div>
-    );
+        );
+    }
 }
 
 export default Dashboard;
