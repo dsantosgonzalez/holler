@@ -42,12 +42,24 @@ class Dashboard extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        // GET YOUR DATA HERE
-        console.log('Picture:', this.state.picture);
-        console.log('Description:', this.state.description);
+        
+        const { picture, description } = this.state;
+    
+        if (picture) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                const pictureData = e.target.result;
+                console.log('Picture Data:', pictureData);
+                console.log('Description:', description);
+                
+            };
+            reader.readAsDataURL(picture);
+        } else {
+            console.log('No picture selected');
+        }
+    
         this.togglePopup();
-        this.setState({picture: null})
-        this.setState({description: null})
+        this.setState({ picture: null, description: null });
     }
 
     cameraSubmit() {
