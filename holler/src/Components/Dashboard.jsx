@@ -8,10 +8,6 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            floodReport: true,
-            fireReport: true,
-            powerReport: true,
-            roadReport: true,
             showPopup: false,
             picture: null,
             description: "",
