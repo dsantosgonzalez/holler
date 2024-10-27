@@ -28,7 +28,7 @@ def classifyPosting(userDescription,userImage):
     if (initResponse == 'no'):
         imagePath = userImage
         with open(imagePath, 'rb') as img_file:
-            imageBase64 = base64.b64encode(img_file.read()).decode('utf-8')
+            imageBase64 = img_file.read().decode('utf-8')
             
         imagePrompt =  "select only one of the categories to which this image pertains to, and only return the category it belongs to: downed power line, uprooted tree, flooding, fire, scattered debris, lightning."
         model.generate(prompt=imagePrompt, params={"image": imageBase64})
