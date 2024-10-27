@@ -8,10 +8,6 @@ class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            floodReport: true,
-            fireReport: true,
-            powerReport: true,
-            roadReport: true,
             showPopup: false,
             picture: null,
             description: "",
@@ -96,7 +92,7 @@ class Dashboard extends React.Component {
                         <form onSubmit={this.handleSubmit}>
                             <label>
                                 Picture (PNG, JPG):
-                                <input required type="file" accept=".png .jpg .jpeg" onChange={this.handlePictureChange} f/>
+                                <input required type="file" accept=".png .jpg .jpeg" onChange={this.handlePictureChange}/>
                             </label>
                             <label>
                                 Description:

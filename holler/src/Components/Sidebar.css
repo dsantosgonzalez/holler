@@ -6,7 +6,9 @@
     height: 100%;
     background-color: rgba(237, 244, 237, 1);
     box-shadow: 1px 0px 5px rgb(182, 182, 182);
-    padding: 20px;
+    /* padding: 20px; */
+    padding-left: 20px;
+    padding-right: 20px;
     z-index: 1000;
     overflow-y: auto;
     transition: width 0.3s ease-in-out;
