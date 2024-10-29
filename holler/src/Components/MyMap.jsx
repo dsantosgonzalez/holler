@@ -40,7 +40,7 @@ export default class MyMap extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:8080/api/hazards/all")
+    axios.get("https://holler-backend-7ca8e6a6b0e1.herokuapp.com/api/hazards/all")
       .then(res => {
         const hazards = res.data;
         this.setState(({ hazards }), () => this.setupMapMarkers());
@@ -50,7 +50,7 @@ export default class MyMap extends React.Component {
   }
 
   refreshPoints() {
-    axios.get("http://localhost:8080/api/hazards/all")
+    axios.get("https://holler-backend-7ca8e6a6b0e1.herokuapp.com/api/hazards/all")
       .then(res => {
         const hazards = res.data;
         this.setState(({ hazards }), () => this.setupMapMarkers());

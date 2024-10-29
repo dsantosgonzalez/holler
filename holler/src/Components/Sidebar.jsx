@@ -51,10 +51,10 @@ export default class Sidebar extends React.Component {
       */
 
       axios.all([
-         axios.get("http://localhost:8080/api/totals/power_outages"),
-         axios.get("http://localhost:8080/api/totals/fires"),
-         axios.get("http://localhost:8080/api/totals/flooding"),
-         axios.get("http://localhost:8080/api/totals/blocked_road")
+         axios.get("https://holler-backend-7ca8e6a6b0e1.herokuapp.com/api/totals/power_outages"),
+         axios.get("https://holler-backend-7ca8e6a6b0e1.herokuapp.com/api/totals/fires"),
+         axios.get("https://holler-backend-7ca8e6a6b0e1.herokuapp.com/api/totals/flooding"),
+         axios.get("https://holler-backend-7ca8e6a6b0e1.herokuapp.com/api/totals/blocked_road")
       ]).then(axios.spread((res_power, res_fire, res_flood, res_block) => {
          
          const powerTotal = res_power.data;

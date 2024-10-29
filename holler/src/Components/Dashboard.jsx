@@ -46,7 +46,7 @@ class Dashboard extends React.Component {
                     severity: severity
                 }
 
-                axios.post("http://localhost:8080/api/report", reportData)
+                axios.post("https://holler-backend-7ca8e6a6b0e1.herokuapp.com/api/report", reportData)
                     .then((response) => {
                         console.log(response)
                     })

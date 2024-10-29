@@ -39,9 +39,9 @@ After installing the necessary dependencies, you MUST add your WATSONX AI API KE
 
 Inside of .env paste the following lines: 
 ```
-MONGO_URI = mongodb+srv://holler:holler2003$@holler.rxe0w.mongodb.net/Holler?retryWrites=true&w=majority&appName=Holler
+MONGO_URI = SECRET_KEY
 WATSONX_AI_AUTH_TYPE = iam
-WATSONX_AI_APIKEY = pyeKTgPy1IT1VLXwP0CV7VeV3kwCutes9jhQr-6kBXPI
+WATSONX_AI_APIKEY = SECRET_KEY
 ```
 
 After the following steps are completed, start the backend
