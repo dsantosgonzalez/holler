@@ -1,11 +1,11 @@
 
-# Holler: a Hurricane Relief Tool for First Responders
-# hollerholler.pages.dev
+# [Holler: a Hurricane Relief Tool for First Responders](hollerholler.pages.dev)
 
 ## About
 This hurricane preparation and relief tool serves as a centralized platform for citizens and local/state governments to document and visualize hurricane impacts in real time. Users can upload images of hurricane-related issues—such as downed power lines, water outages, blocked roads, structural damage, sinkholes, gas leaks, hazardous debris, or stranded individuals—which are then categorized and mapped. A map interface displays these reports as markers, allowing users to click for images and additional details at specific locations. For governments, this provides a high-resolution view of critical areas, facilitating swift, targeted relief efforts and resource allocation based on reported damage and hazard density.
 
-
+## Link
+hollerholler.pages.dev
 
 
 ## Features
@@ -15,7 +15,7 @@ This hurricane preparation and relief tool serves as a centralized platform for 
 - Report submissions
 - Clustering reports based on zoom level
 - Descriptive popups of reports 
-- Report filtering
+- AI-based report filtering 
 
 
 
